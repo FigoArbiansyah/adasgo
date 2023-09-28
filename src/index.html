@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../dist/css/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Admin Dashboard - Figo AP</title>
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="min-h-screen grid md:grid-cols-11">
+      <!-- Sidebar -->
+      <aside class="max-md:hidden col-span-2 bg-black p-6">
+        <div>
+          <div>
+            <div class="sidebar-title text-white px-2">
+              <i class="block bx bxs-castle scale-150"></i>
+              <h2 class="mt-1 text-xl font-bold">AdasGo</h2>
+            </div>
+            <span class="mt-4 block border-t border-slate-100"></span>
+          </div>
+          <div class="grid gap-1 mt-5">
+            <span>
+              <a href="javascript:void(0);">
+                <div class="sidebar-items">
+                  <i class="bx bxs-dashboard"></i>
+                  <span>Dashboard</span>
+                </div>
+              </a>
+            </span>
+            <span>
+              <a href="javascript:void(0);">
+                <div class="sidebar-items">
+                  <i class="bx bxs-bar-chart-alt-2"></i>
+                  <span>Statistics</span>
+                </div>
+              </a>
+            </span>
+            <span>
+              <a href="javascript:void(0);">
+                <div class="sidebar-items">
+                  <i class="bx bx-transfer"></i>
+                  <span>Trade</span>
+                </div>
+              </a>
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="bg-gray-50 min-h-screen col-span-9">
+        <!-- Navbar -->
+        <header class="px-8 py-4 bg-white grid grid-cols-2">
+          <div class="md:pr-10 relative">
+            <input
+              type="text"
+              name="search"
+              placeholder="Search Appointments, Staffs, etc"
+              class="outline-0 py-2 pl-10 pe-4 rounded-lg bg-stone-400 bg-opacity-10 w-full relative placeholder:text-light placeholder:text-sm"
+              id="navbar-input-search"
+            />
+            <i
+              class="bx bx-search text-xl absolute left-3 top-[50%] -translate-y-[50%]"
+            ></i>
+          </div>
+          <div class="relative flex gap-3 items-center justify-end">
+            <div class="px-4 border-r">
+              <span class="block relative">
+                <i class="bx bx-bell relative text-2xl block"></i>
+                <span class="absolute notification-count">1</span>
+              </span>
+            </div>
+            <!-- User Profile Image -->
+            <div
+              class="pl-3 flex gap-1 items-center cursor-pointer"
+              id="user-profile-image"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                class="w-10 aspect-square rounded-full"
+                alt=""
+              />
+              <i class="bx bxs-chevron-down text-slate-600"></i>
+            </div>
+            <!-- User Pofile Menu -->
+            <div
+              id="user-profile-menu"
+              class="hidden absolute top-14 right-0 bg-white border shadow rounded-lg"
+            >
+              <ul>
+                <li class="hover:bg-gray-100">
+                  <a
+                    href="javascript:void(0);"
+                    class="w-48 p-3 flex gap-2 items-center text-slate-600"
+                  >
+                    <i class="bx bxs-cog text-xl"></i>
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li class="hover:bg-gray-100">
+                  <a
+                    href="javascript:void(0);"
+                    class="w-48 p-3 flex gap-2 items-center text-slate-600"
+                  >
+                    <i class="bx bx-log-out-circle text-xl"></i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main class="px-8 py-4">
+          <!-- Card Warpper -->
+          <div class="grid md:grid-cols-4 gap-5">
+            <!-- Card Component -->
+            <div class="p-5 rounded-lg bg-purple-15">
+              <div>
+                <h5 class="font-semibold">Total Trades</h5>
+              </div>
+              <div class="mt-2 flex justify-between">
+                <div>
+                  <h4 class="text-xl font-bold">574</h4>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-sm">+11.01%</span>
+                  <i class="bx bx-trending-up"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card Component -->
+            <div class="p-5 rounded-lg bg-green-15">
+              <div>
+                <h5 class="font-semibold">Total Trades</h5>
+              </div>
+              <div class="mt-2 flex justify-between">
+                <div>
+                  <h4 class="text-xl font-bold">574</h4>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-sm">+11.01%</span>
+                  <i class="bx bx-trending-up"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card Component -->
+            <div class="p-5 rounded-lg bg-indigo-15">
+              <div>
+                <h5 class="font-semibold">Total Trades</h5>
+              </div>
+              <div class="mt-2 flex justify-between">
+                <div>
+                  <h4 class="text-xl font-bold">574</h4>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-sm">+11.01%</span>
+                  <i class="bx bx-trending-up"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card Component -->
+            <div class="p-5 rounded-lg bg-yellow-15">
+              <div>
+                <h5 class="font-semibold">Total Trades</h5>
+              </div>
+              <div class="mt-2 flex justify-between">
+                <div>
+                  <h4 class="text-xl font-bold">574</h4>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-sm">+11.01%</span>
+                  <i class="bx bx-trending-up"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Analytic and another card (wrapper) -->
+          <div class="grid md:grid-cols-12 gap-5 mt-8">
+            <div class="md:col-span-8 bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Profit</h5>
+              </div>
+              <!-- Chart -->
+              <canvas id="line-chart" class="cursor-crosshair"></canvas>
+            </div>
+            <div
+              class="md:col-span-4 bg-white rounded-lg p-4 flex flex-col justify-between"
+            >
+              <div class="flex justify-between">
+                <h5 class="font-semibold">Drawdown</h5>
+                <select
+                  name="order-select"
+                  id="select-option-drawdown"
+                  class="outline-0 text-sm text-gray-500 px-2"
+                >
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+              <!-- Chart -->
+              <div>
+                <canvas id="bar-chart-1" height="270" class="mx-auto"></canvas>
+              </div>
+            </div>
+            <div class="md:col-span-4 bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Visitor</h5>
+              </div>
+              <!-- Chart -->
+              <div class="w-full">
+                <canvas id="donut-chart-1" class="mx-auto"></canvas>
+              </div>
+            </div>
+            <div class="md:col-span-4 bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Visitor</h5>
+              </div>
+              <!-- Chart -->
+              <div class="w-full">
+                <canvas id="pie-chart-1" class="mx-auto"></canvas>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"
+      integrity="sha512-7U4rRB8aGAHGVad3u2jiC7GA5/1YhQcQjxKeaVms/bT66i3LVBMRcBI9KwABNWnxOSwulkuSXxZLGuyfvo7V1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> -->
+    <script src="../dist/js/local-chart.js"></script>
+    <!-- My JS -->
+    <script src="../dist/js/index.js"></script>
+  </body>
+</html>
