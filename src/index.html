@@ -95,7 +95,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              class="w-8 h-8"
             >
               <path
                 stroke-linecap="round"
@@ -104,7 +104,7 @@
               />
             </svg>
           </button>
-          <div class="md:pr-10 relative">
+          <div class="md:pr-10 max-md:hidden relative">
             <input
               type="text"
               name="search"
@@ -117,7 +117,10 @@
             ></i>
           </div>
           <div class="relative flex gap-3 items-center justify-end">
-            <div class="px-4 border-r">
+            <div class="px-4 border-r flex gap-3">
+              <span class="md:hidden relative">
+                <i class="bx bx-search relative text-2xl block"></i>
+              </span>
               <span class="block relative">
                 <i class="bx bx-bell relative text-2xl block"></i>
                 <span class="absolute notification-count">1</span>
@@ -133,7 +136,9 @@
                 class="w-10 aspect-square rounded-full"
                 alt=""
               />
-              <i class="bx bxs-chevron-down text-slate-600"></i>
+              <span class="max-md:hidden">
+                <i class="bx bxs-chevron-down text-slate-600"></i>
+              </span>
             </div>
             <!-- User Pofile Menu -->
             <div
