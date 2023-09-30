@@ -15,25 +15,46 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
-    <title>Admin Dashboard - Adasgo</title>
+    <title>Adasgo - Admin Dashboard</title>
   </head>
   <body>
     <!-- Main Container -->
     <div class="min-h-screen grid md:grid-cols-11">
       <!-- Sidebar -->
-      <aside class="max-md:hidden col-span-2 bg-black p-6">
+      <aside
+        id="sidebar"
+        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden"
+      >
         <div>
-          <div>
-            <div class="sidebar-title text-white px-2">
-              <i class="block bx bxs-castle scale-150"></i>
-              <h2 class="mt-1 text-xl font-bold">AdasGo</h2>
+          <div class="max-md:flex max-md:justify-between">
+            <div>
+              <div class="sidebar-title text-white px-2">
+                <i class="block bx bxs-castle scale-150"></i>
+                <h2 class="mt-1 text-xl font-bold">AdasGo</h2>
+              </div>
+              <span class="mt-4 block border-t border-slate-100"></span>
             </div>
-            <span class="mt-4 block border-t border-slate-100"></span>
+            <button type="button" class="md:hidden" id="bar-button-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-white"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                />
+              </svg>
+            </button>
           </div>
           <div class="grid gap-1 mt-5">
             <span>
-              <a href="javascript:void(0);">
-                <div class="sidebar-items">
+              <a href="./index.html">
+                <div class="sidebar-items active-link">
                   <i class="bx bxs-dashboard"></i>
                   <span>Dashboard</span>
                 </div>
@@ -62,7 +83,25 @@
       <!-- Main Content -->
       <div class="bg-gray-50 min-h-screen col-span-9">
         <!-- Navbar -->
-        <header class="px-8 py-4 bg-white grid grid-cols-2">
+        <header
+          class="md:px-8 px-5 py-4 bg-white grid grid-cols-2 max-md:flex max-md:justify-between max-md:items-center"
+        >
+          <button type="button" class="md:hidden" id="bar-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+              />
+            </svg>
+          </button>
           <div class="md:pr-10 relative">
             <input
               type="text"
@@ -122,15 +161,15 @@
             </div>
           </div>
         </header>
-        <main class="px-8 py-4">
+        <main class="md:px-8 px-5 py-4">
           <!-- Card Warpper -->
           <div class="grid md:grid-cols-4 gap-5">
             <!-- Card Component -->
             <div class="p-5 rounded-lg bg-purple-15">
               <div>
-                <h5 class="font-semibold">Total Trades</h5>
+                <h5 class="font-semibold text-sm">Total Trades</h5>
               </div>
-              <div class="mt-2 flex justify-between">
+              <div class="mt-5 flex justify-between">
                 <div>
                   <h4 class="text-xl font-bold">574</h4>
                 </div>
@@ -143,44 +182,44 @@
             <!-- Card Component -->
             <div class="p-5 rounded-lg bg-green-15">
               <div>
-                <h5 class="font-semibold">Total Trades</h5>
+                <h5 class="font-semibold text-sm">Holding Period Return</h5>
               </div>
-              <div class="mt-2 flex justify-between">
+              <div class="mt-5 flex justify-between">
                 <div>
-                  <h4 class="text-xl font-bold">574</h4>
+                  <h4 class="text-xl font-bold">59.57%</h4>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-sm">+11.01%</span>
-                  <i class="bx bx-trending-up"></i>
+                  <span class="text-sm">-0.56%</span>
+                  <i class="bx bx-trending-down text-red-500"></i>
                 </div>
               </div>
             </div>
             <!-- Card Component -->
             <div class="p-5 rounded-lg bg-indigo-15">
               <div>
-                <h5 class="font-semibold">Total Trades</h5>
+                <h5 class="font-semibold text-sm">Net Profit</h5>
               </div>
-              <div class="mt-2 flex justify-between">
+              <div class="mt-5 flex justify-between">
                 <div>
-                  <h4 class="text-xl font-bold">574</h4>
+                  <h4 class="text-xl font-bold">2,97,874</h4>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-sm">+11.01%</span>
-                  <i class="bx bx-trending-up"></i>
+                  <span class="text-sm">-0.56%</span>
+                  <i class="bx bx-trending-down text-red-500"></i>
                 </div>
               </div>
             </div>
             <!-- Card Component -->
             <div class="p-5 rounded-lg bg-yellow-15">
               <div>
-                <h5 class="font-semibold">Total Trades</h5>
+                <h5 class="font-semibold text-sm">Avg Durations</h5>
               </div>
-              <div class="mt-2 flex justify-between">
+              <div class="mt-5 flex justify-between">
                 <div>
-                  <h4 class="text-xl font-bold">574</h4>
+                  <h4 class="text-xl font-bold">17 days</h4>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-sm">+11.01%</span>
+                  <span class="text-sm">+9.15%</span>
                   <i class="bx bx-trending-up"></i>
                 </div>
               </div>
@@ -239,12 +278,6 @@
 
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"
-      integrity="sha512-7U4rRB8aGAHGVad3u2jiC7GA5/1YhQcQjxKeaVms/bT66i3LVBMRcBI9KwABNWnxOSwulkuSXxZLGuyfvo7V1A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script> -->
     <script src="../dist/js/local-chart.js"></script>
     <!-- My JS -->
     <script src="../dist/js/index.js"></script>

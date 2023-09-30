@@ -13,6 +13,9 @@
   .sidebar-items {
     @apply p-3 rounded-lg flex gap-2.5 items-center hover:text-white text-sidebar-link hover:bg-slate-100 hover:bg-opacity-10 transition-all ease-in-out duration-300;
   }
+  .active-link {
+    @apply text-white bg-slate-100 bg-opacity-10;
+  }
   .bg-purple-15 {
     @apply bg-purple-500 bg-opacity-[.15];
   }
@@ -27,5 +30,8 @@
   }
   .notification-count {
     @apply text-blue-500 font-bold -top-2 text-xs right-0;
+  }
+  .responsive-sidebar {
+    @apply max-md:fixed max-md:top-0 max-md:z-40 max-md:h-screen max-md:w-1/2 max-md:overflow-y-auto;
   }
 }
