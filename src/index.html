@@ -23,7 +23,7 @@
       <!-- Sidebar -->
       <aside
         id="sidebar"
-        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden"
+        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden max-h-screen"
       >
         <div>
           <div class="max-md:flex max-md:justify-between">
@@ -81,7 +81,9 @@
       </aside>
 
       <!-- Main Content -->
-      <div class="bg-gray-50 min-h-screen col-span-9">
+      <div
+        class="bg-gray-50 min-h-screen col-span-9 max-h-screen overflow-y-auto"
+      >
         <!-- Navbar -->
         <header
           class="md:px-8 px-5 py-4 bg-white grid grid-cols-2 max-md:flex max-md:justify-between max-md:items-center"
