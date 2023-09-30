@@ -32,6 +32,6 @@
     @apply text-blue-500 font-bold -top-2 text-xs right-0;
   }
   .responsive-sidebar {
-    @apply max-md:fixed max-md:top-0 max-md:z-40 max-md:h-screen max-md:w-1/2 max-md:overflow-y-auto;
+    @apply max-md:fixed max-md:top-0 max-md:z-40 max-md:h-screen max-md:w-2/3 max-md:overflow-y-auto;
   }
 }
