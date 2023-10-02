@@ -689,6 +689,103 @@ video {
   color: rgb(245 245 245 / var(--tw-text-opacity));
 }
 
+/* GENERAL FORM-LABEL and FORM-INPUT */
+
+.form-label,
+  .form-input {
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+
+/* FORM */
+
+.vertical-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.vertical-form > .form-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-input {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  padding: 0.5rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.form-input:focus {
+  border-color: rgb(99 102 241 / var(--tw-border-opacity));
+  --tw-border-opacity: 0.3;
+}
+
+.form-radio-group > .form-radio,
+  .form-check-group > .form-check {
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-radio-group > .form-radio > .form-input,
+  .form-check-group > .form-check > .form-input {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  cursor: pointer;
+}
+
+.horizontal-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.horizontal-form > .form-group {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+}
+
+.horizontal-form > .form-group > .form-label {
+  grid-column: span 4 / span 4;
+}
+
+.horizontal-form > .form-group > .form-input {
+  grid-column: span 8 / span 8;
+}
+
+/* FORM BUTTON TO SUBMIT */
+
+.form-button {
+  margin-top: 0.5rem;
+  display: block;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.form-button:hover {
+  --tw-bg-opacity: 0.75;
+}
+
 .absolute {
   position: absolute;
 }
@@ -952,6 +1049,10 @@ video {
   padding-bottom: 1rem;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
 .pe-4 {
   -webkit-padding-end: 1rem;
           padding-inline-end: 1rem;
@@ -1100,6 +1201,10 @@ video {
 
   .md\:grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:grid-cols-4 {

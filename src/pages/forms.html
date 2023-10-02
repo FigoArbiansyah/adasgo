@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../dist/css/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+    />
+
+    <title>Adasgo - Admin Dashboard</title>
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="min-h-screen grid md:grid-cols-11">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden max-h-screen overflow-y-auto"
+      >
+        <div>
+          <div class="max-md:flex max-md:justify-between">
+            <div>
+              <div class="sidebar-title text-white px-2">
+                <i class="block bx bxs-castle scale-150"></i>
+                <h2 class="mt-1 text-xl font-bold">AdasGo</h2>
+              </div>
+              <span class="mt-4 block border-t border-slate-100"></span>
+            </div>
+            <button type="button" class="md:hidden" id="bar-button-2">
+              <i class="bx bx-x scale-150 text-white"></i>
+            </button>
+          </div>
+          <div class="grid gap-1 mt-5">
+            <span>
+              <a href="../index.html">
+                <div class="sidebar-items">
+                  <i class="bx bxs-dashboard"></i>
+                  <span>Dashboard</span>
+                </div>
+              </a>
+            </span>
+            <span>
+              <a href="./datatables.html">
+                <div class="sidebar-items">
+                  <!-- <i class="bx bxs-bar-chart-alt-2"></i> -->
+                  <i class="bx bx-table"></i>
+                  <span>Datatables</span>
+                </div>
+              </a>
+            </span>
+            <span>
+              <a href="./forms.html">
+                <div class="sidebar-items active-link">
+                  <!-- <i class="bx bxs-bar-chart-alt-2"></i> -->
+                  <i class="bx bx-book-content"></i>
+                  <span>Forms</span>
+                </div>
+              </a>
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div
+        class="bg-gray-50 min-h-screen col-span-9 max-h-screen overflow-y-auto"
+      >
+        <!-- Navbar -->
+        <header
+          class="md:px-8 px-5 py-4 bg-white grid grid-cols-2 max-md:flex max-md:justify-between max-md:items-center max-md:gap-2"
+        >
+          <button type="button" class="md:hidden" id="bar-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-8 h-8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+              />
+            </svg>
+          </button>
+          <div class="md:pr-10 max-md:hidden relative">
+            <input
+              type="text"
+              name="search"
+              placeholder="Search Appointments, Staffs, etc"
+              class="outline-0 py-2 pl-10 pe-4 rounded-lg bg-stone-400 bg-opacity-10 w-full relative placeholder:text-light placeholder:text-sm"
+              id="navbar-input-search"
+            />
+            <i
+              class="bx bx-search text-xl absolute left-3 top-[50%] -translate-y-[50%]"
+            ></i>
+          </div>
+          <div class="relative flex gap-3 items-center justify-end">
+            <div class="px-4 border-r flex gap-3">
+              <span class="md:hidden relative">
+                <i class="bx bx-search relative text-2xl block"></i>
+              </span>
+              <span class="block relative">
+                <i class="bx bx-bell relative text-2xl block"></i>
+                <span class="absolute notification-count">1</span>
+              </span>
+            </div>
+            <!-- User Profile Image -->
+            <div
+              class="pl-3 flex gap-1 items-center cursor-pointer"
+              id="user-profile-image"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                class="w-10 aspect-square rounded-full"
+                alt=""
+              />
+              <span class="max-md:hidden">
+                <i class="bx bxs-chevron-down text-slate-600"></i>
+              </span>
+            </div>
+            <!-- User Pofile Menu -->
+            <div
+              id="user-profile-menu"
+              class="hidden absolute top-14 right-0 bg-white border shadow rounded-lg"
+            >
+              <ul>
+                <li class="hover:bg-gray-100">
+                  <a
+                    href="javascript:void(0);"
+                    class="w-48 p-3 flex gap-2 items-center text-slate-600"
+                  >
+                    <i class="bx bxs-cog text-xl"></i>
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li class="hover:bg-gray-100">
+                  <a
+                    href="javascript:void(0);"
+                    class="w-48 p-3 flex gap-2 items-center text-slate-600"
+                  >
+                    <i class="bx bx-log-out-circle text-xl"></i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main class="md:px-8 px-5 py-4">
+          <!-- Table Cards -->
+          <div class="grid md:grid-cols-2 gap-5 my-5">
+            <div class="bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Vertical Form</h5>
+              </div>
+              <!-- Form -->
+              <div class="mt-4">
+                <form action="/" method="post" class="vertical-form pb-2">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-input" id="name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <!-- By default display id BLOCK, and you can custom the position with display property -->
+                    <div class="form-radio-group flex gap-3">
+                      <div class="form-radio">
+                        <input
+                          type="radio"
+                          class="form-input"
+                          name="gender"
+                          id="male"
+                        />
+                        <label for="male" class="form-label">Male</label>
+                      </div>
+                      <div class="form-radio">
+                        <input
+                          type="radio"
+                          class="form-input"
+                          name="gender"
+                          id="female"
+                        />
+                        <label for="female" class="form-label">Female</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="number" class="form-input" id="phone" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-input" id="email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-input" id="password" />
+                  </div>
+                  <div class="form-group">
+                    <label for="hobbies" class="form-label">Hobbies:</label>
+                    <!-- By default display id BLOCK, and you can custom the position with display property -->
+                    <div class="form-check-group grid gap-3">
+                      <div class="form-check">
+                        <input
+                          type="checkbox"
+                          class="form-input"
+                          name="hobbies"
+                          id="volley"
+                        />
+                        <label for="volley" class="form-label">Volley</label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          type="checkbox"
+                          class="form-input"
+                          name="hobbies"
+                          id="coding"
+                        />
+                        <label for="coding" class="form-label">Coding</label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          type="checkbox"
+                          class="form-input"
+                          name="hobbies"
+                          id="singing"
+                        />
+                        <label for="singing" class="form-label">Singing</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea
+                      type="password"
+                      rows="10"
+                      class="form-input"
+                      id="address"
+                    >
+Input your address</textarea
+                    >
+                  </div>
+                  <button class="form-button">Submit</button>
+                </form>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Horizontal Form</h5>
+              </div>
+              <!-- Form -->
+              <div class="mt-4">
+                <form action="/" method="post" class="horizontal-form pb-2">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-input" id="name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="number" class="form-input" id="phone" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-input" id="email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-input" id="password" />
+                  </div>
+                  <div class="form-group">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea
+                      type="password"
+                      rows="10"
+                      class="form-input"
+                      id="address"
+                    >
+Input your address</textarea
+                    >
+                  </div>
+                  <button class="form-button">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- My JS -->
+    <!-- Opsional to activate 👇 -->
+    <script src="../../dist/js/index.js"></script>
+  </body>
+</html>

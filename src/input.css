@@ -85,4 +85,43 @@
   .dark-table > tbody > tr > td {
     @apply border bg-slate-800 text-[#f5f5f5];
   }
+  /* GENERAL FORM-LABEL and FORM-INPUT */
+  .form-label,
+  .form-input {
+    @apply text-slate-600;
+  }
+  /* FORM */
+  .vertical-form {
+    @apply grid gap-3;
+  }
+  .vertical-form > .form-group {
+    @apply grid gap-2;
+  }
+  .form-input {
+    @apply outline-none border rounded p-2 focus:border-indigo-500 focus:border-opacity-30 transition duration-200;
+  }
+  .form-radio-group > .form-radio,
+  .form-check-group > .form-check {
+    @apply mb-0 flex items-center gap-2;
+  }
+  .form-radio-group > .form-radio > .form-input,
+  .form-check-group > .form-check > .form-input {
+    @apply scale-125 cursor-pointer;
+  }
+  .horizontal-form {
+    @apply grid gap-3;
+  }
+  .horizontal-form > .form-group {
+    @apply grid grid-cols-12 gap-4 items-center;
+  }
+  .horizontal-form > .form-group > .form-label {
+    @apply col-span-4;
+  }
+  .horizontal-form > .form-group > .form-input {
+    @apply col-span-8;
+  }
+  /* FORM BUTTON TO SUBMIT */
+  .form-button {
+    @apply block py-2 bg-indigo-500 text-white hover:bg-opacity-75 rounded transition duration-200 mt-2;
+  }
 }
