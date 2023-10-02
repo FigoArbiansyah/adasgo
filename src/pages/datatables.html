@@ -28,7 +28,7 @@
       <!-- Sidebar -->
       <aside
         id="sidebar"
-        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden max-h-screen"
+        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden max-h-screen overflow-y-auto"
       >
         <div>
           <div class="max-md:flex max-md:justify-between">
@@ -40,20 +40,7 @@
               <span class="mt-4 block border-t border-slate-100"></span>
             </div>
             <button type="button" class="md:hidden" id="bar-button-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 text-white"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-                />
-              </svg>
+              <i class="bx bx-x scale-150 text-white"></i>
             </button>
           </div>
           <div class="grid gap-1 mt-5">
@@ -591,6 +578,9 @@
       </div>
     </div>
 
+    <!-- My JS -->
+    <!-- Opsional to activate 👇 -->
+    <script src="../../dist/js/index.js"></script>
     <!-- JQUERY -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -601,12 +591,5 @@
     <!-- Datatables JS -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script src="../../dist/js/local-datatables.js"></script>
-    <!-- Chart JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Opsional to activate 👇 -->
-    <!-- <script src="../dist/js/local-chart.js"></script> -->
-    <!-- My JS -->
-    <!-- Opsional to activate 👇 -->
-    <!-- <script src="../dist/js/index.js"></script> -->
   </body>
 </html>

@@ -11,6 +11,17 @@
 }
 
 @layer components {
+  #sidebar::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  #sidebar::-webkit-scrollbar-track {
+    @apply bg-black p-1;
+  }
+
+  #sidebar::-webkit-scrollbar-thumb {
+    @apply w-10 bg-[#59C3C8] rounded-full max-h-5;
+  }
   .sidebar-title {
     @apply flex gap-2.5 items-center;
   }
