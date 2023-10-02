@@ -6,6 +6,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+*::selection {
+  @apply bg-[#59C3C8] text-white;
+}
+
 @layer components {
   .sidebar-title {
     @apply flex gap-2.5 items-center;
@@ -33,5 +37,41 @@
   }
   .responsive-sidebar {
     @apply max-md:fixed max-md:top-0 max-md:z-40 max-md:h-screen max-md:w-2/3 max-md:overflow-y-auto;
+  }
+  /* TABLE BORDERED */
+  .simple-table {
+    @apply border;
+  }
+  .simple-table > thead > tr > th {
+    @apply border;
+  }
+  .simple-table > tbody > tr > td {
+    @apply border text-slate-600;
+  }
+  /* TABLE HOVERED */
+  .hovered-table {
+    @apply border;
+  }
+  .hovered-table > tbody > tr {
+    @apply hover:bg-slate-800 hover:bg-opacity-10;
+  }
+  .hovered-table > thead > tr > th {
+    @apply border;
+  }
+  .hovered-table > tbody > tr > td {
+    @apply border text-slate-600;
+  }
+  /* TABLE DARK */
+  .dark-table {
+    @apply border;
+  }
+  .dark-table > tbody > tr {
+    @apply hover:opacity-90;
+  }
+  .dark-table > thead > tr > th {
+    @apply border bg-slate-800 text-[#f5f5f5];
+  }
+  .dark-table > tbody > tr > td {
+    @apply border bg-slate-800 text-[#f5f5f5];
   }
 }

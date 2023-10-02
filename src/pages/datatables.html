@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../dist/css/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+    />
+
+    <title>Adasgo - Admin Dashboard</title>
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="min-h-screen grid md:grid-cols-11">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="md:block col-span-2 bg-black p-6 responsive-sidebar hidden max-h-screen"
+      >
+        <div>
+          <div class="max-md:flex max-md:justify-between">
+            <div>
+              <div class="sidebar-title text-white px-2">
+                <i class="block bx bxs-castle scale-150"></i>
+                <h2 class="mt-1 text-xl font-bold">AdasGo</h2>
+              </div>
+              <span class="mt-4 block border-t border-slate-100"></span>
+            </div>
+            <button type="button" class="md:hidden" id="bar-button-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-white"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="grid gap-1 mt-5">
+            <span>
+              <a href="../index.html">
+                <div class="sidebar-items">
+                  <i class="bx bxs-dashboard"></i>
+                  <span>Dashboard</span>
+                </div>
+              </a>
+            </span>
+            <span>
+              <a href="./datatables.html">
+                <div class="sidebar-items active-link">
+                  <!-- <i class="bx bxs-bar-chart-alt-2"></i> -->
+                  <i class="bx bx-table"></i>
+                  <span>Datatables</span>
+                </div>
+              </a>
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div
+        class="bg-gray-50 min-h-screen col-span-9 max-h-screen overflow-y-auto"
+      >
+        <!-- Navbar -->
+        <header
+          class="md:px-8 px-5 py-4 bg-white grid grid-cols-2 max-md:flex max-md:justify-between max-md:items-center max-md:gap-2"
+        >
+          <button type="button" class="md:hidden" id="bar-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-8 h-8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+              />
+            </svg>
+          </button>
+          <div class="md:pr-10 max-md:hidden relative">
+            <input
+              type="text"
+              name="search"
+              placeholder="Search Appointments, Staffs, etc"
+              class="outline-0 py-2 pl-10 pe-4 rounded-lg bg-stone-400 bg-opacity-10 w-full relative placeholder:text-light placeholder:text-sm"
+              id="navbar-input-search"
+            />
+            <i
+              class="bx bx-search text-xl absolute left-3 top-[50%] -translate-y-[50%]"
+            ></i>
+          </div>
+          <div class="relative flex gap-3 items-center justify-end">
+            <div class="px-4 border-r flex gap-3">
+              <span class="md:hidden relative">
+                <i class="bx bx-search relative text-2xl block"></i>
+              </span>
+              <span class="block relative">
+                <i class="bx bx-bell relative text-2xl block"></i>
+                <span class="absolute notification-count">1</span>
+              </span>
+            </div>
+            <!-- User Profile Image -->
+            <div
+              class="pl-3 flex gap-1 items-center cursor-pointer"
+              id="user-profile-image"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                class="w-10 aspect-square rounded-full"
+                alt=""
+              />
+              <span class="max-md:hidden">
+                <i class="bx bxs-chevron-down text-slate-600"></i>
+              </span>
+            </div>
+            <!-- User Pofile Menu -->
+            <div
+              id="user-profile-menu"
+              class="hidden absolute top-14 right-0 bg-white border shadow rounded-lg"
+            >
+              <ul>
+                <li class="hover:bg-gray-100">
+                  <a
+                    href="javascript:void(0);"
+                    class="w-48 p-3 flex gap-2 items-center text-slate-600"
+                  >
+                    <i class="bx bxs-cog text-xl"></i>
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li class="hover:bg-gray-100">
+                  <a
+                    href="javascript:void(0);"
+                    class="w-48 p-3 flex gap-2 items-center text-slate-600"
+                  >
+                    <i class="bx bx-log-out-circle text-xl"></i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main class="md:px-8 px-5 py-4">
+          <!-- Table Cards -->
+          <div class="grid gap-5 my-5">
+            <div class="bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Simple Table</h5>
+              </div>
+              <!-- Table -->
+              <div class="mt-4">
+                <table class="simple-table w-full" cellpadding="10">
+                  <thead class="text-left font-semibold">
+                    <tr>
+                      <th>No</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="font-semibold">1</td>
+                      <td>Figo Arbiansyah</td>
+                      <td>Cirebon</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">2</td>
+                      <td>John Doe</td>
+                      <td>Bandung</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">3</td>
+                      <td>John Doe II</td>
+                      <td>Semarang</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">4</td>
+                      <td>Jane Smith</td>
+                      <td>Jakarta</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">5</td>
+                      <td>Mary Johnson</td>
+                      <td>Surabaya</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">6</td>
+                      <td>Michael Brown</td>
+                      <td>Medan</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">7</td>
+                      <td>Susan Davis</td>
+                      <td>Palembang</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">8</td>
+                      <td>David Wilson</td>
+                      <td>Makassar</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">9</td>
+                      <td>Lisa Martinez</td>
+                      <td>Bali</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">10</td>
+                      <td>James Taylor</td>
+                      <td>Yogyakarta</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Hovered Table</h5>
+              </div>
+              <!-- Table -->
+              <div class="mt-4">
+                <table class="hovered-table w-full" cellpadding="10">
+                  <thead class="text-left font-semibold">
+                    <tr>
+                      <th>No</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="font-semibold">1</td>
+                      <td>Figo Arbiansyah</td>
+                      <td>Cirebon</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">2</td>
+                      <td>John Doe</td>
+                      <td>Bandung</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">3</td>
+                      <td>John Doe II</td>
+                      <td>Semarang</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">4</td>
+                      <td>Jane Smith</td>
+                      <td>Jakarta</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">5</td>
+                      <td>Mary Johnson</td>
+                      <td>Surabaya</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">6</td>
+                      <td>Michael Brown</td>
+                      <td>Medan</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">7</td>
+                      <td>Susan Davis</td>
+                      <td>Palembang</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">8</td>
+                      <td>David Wilson</td>
+                      <td>Makassar</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">9</td>
+                      <td>Lisa Martinez</td>
+                      <td>Bali</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">10</td>
+                      <td>James Taylor</td>
+                      <td>Yogyakarta</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Dark Table</h5>
+              </div>
+              <!-- Table -->
+              <div class="mt-4">
+                <table class="dark-table w-full" cellpadding="10">
+                  <thead class="text-left font-semibold">
+                    <tr>
+                      <th>No</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="font-semibold">1</td>
+                      <td>Figo Arbiansyah</td>
+                      <td>Cirebon</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">2</td>
+                      <td>John Doe</td>
+                      <td>Bandung</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">3</td>
+                      <td>John Doe II</td>
+                      <td>Semarang</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">4</td>
+                      <td>Jane Smith</td>
+                      <td>Jakarta</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">5</td>
+                      <td>Mary Johnson</td>
+                      <td>Surabaya</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">6</td>
+                      <td>Michael Brown</td>
+                      <td>Medan</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">7</td>
+                      <td>Susan Davis</td>
+                      <td>Palembang</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">8</td>
+                      <td>David Wilson</td>
+                      <td>Makassar</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">9</td>
+                      <td>Lisa Martinez</td>
+                      <td>Bali</td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">10</td>
+                      <td>James Taylor</td>
+                      <td>Yogyakarta</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 overflow-x-auto">
+              <div>
+                <h5 class="font-semibold">Dynamic Data Table</h5>
+              </div>
+              <!-- Table -->
+              <div class="mt-4">
+                <table id="myTable" class="display">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Animal</th>
+                      <th>Description</th>
+                      <th>Class</th>
+                      <th>Habitat</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-sm">
+                    <tr>
+                      <td>1</td>
+                      <td>Elephant</td>
+                      <td>
+                        The elephant is a giant mammal known for its long trunk.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Savannah</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Lion</td>
+                      <td>
+                        The lion is a powerful carnivorous animal and is the
+                        apex predator in the African savanna.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Savannah</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Tiger</td>
+                      <td>
+                        The tiger is a large cat species known for its
+                        distinctive orange fur with black stripes.
+                      </td>
+                      <td>Mammal</td>
+                      <td>Various</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Giraffe</td>
+                      <td>
+                        The giraffe is the tallest terrestrial animal, with a
+                        long neck and spotted coat.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Savannah</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Zebra</td>
+                      <td>
+                        The zebra is a horse-like animal with black and white
+                        stripes.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Savannah</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Hippopotamus</td>
+                      <td>
+                        The hippopotamus is a large, semi-aquatic mammal known
+                        for its massive size and powerful jaws.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Rivers</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Python</td>
+                      <td>
+                        The python is a non-venomous snake known for its
+                        constricting behavior.
+                      </td>
+                      <td>Reptile</td>
+                      <td>Various</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>Kangaroo</td>
+                      <td>
+                        The kangaroo is a marsupial native to Australia known
+                        for its powerful hind legs and hopping locomotion.
+                      </td>
+                      <td>Mammal</td>
+                      <td>Australian Outback</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Penguin</td>
+                      <td>
+                        The penguin is a flightless bird found in the Southern
+                        Hemisphere and known for its tuxedo-like appearance.
+                      </td>
+                      <td>Bird</td>
+                      <td>Antarctic</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Octopus</td>
+                      <td>
+                        The octopus is a marine mollusk known for its
+                        intelligence and multiple arms with suction cups.
+                      </td>
+                      <td>Mollusk</td>
+                      <td>Ocean</td>
+                    </tr>
+                    <tr>
+                      <td>11</td>
+                      <td>Rhino</td>
+                      <td>
+                        The rhinoceros is a large, herbivorous mammal known for
+                        its thick skin and horn on its nose.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Plains</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>Panda</td>
+                      <td>
+                        The panda is a bear native to China known for its black
+                        and white fur and bamboo diet.
+                      </td>
+                      <td>Mammal</td>
+                      <td>Mountain Forests</td>
+                    </tr>
+                    <tr>
+                      <td>13</td>
+                      <td>Dolphin</td>
+                      <td>
+                        The dolphin is a marine mammal known for its
+                        intelligence and playful behavior.
+                      </td>
+                      <td>Mammal</td>
+                      <td>Ocean</td>
+                    </tr>
+                    <tr>
+                      <td>14</td>
+                      <td>Crocodile</td>
+                      <td>
+                        The crocodile is a large reptile known for its powerful
+                        jaws and semi-aquatic lifestyle.
+                      </td>
+                      <td>Reptile</td>
+                      <td>Swamps and Rivers</td>
+                    </tr>
+                    <tr>
+                      <td>15</td>
+                      <td>Peacock</td>
+                      <td>
+                        The peacock is a colorful bird known for its striking
+                        feather display during courtship.
+                      </td>
+                      <td>Bird</td>
+                      <td>Indian Subcontinent</td>
+                    </tr>
+                    <tr>
+                      <td>16</td>
+                      <td>Koala</td>
+                      <td>
+                        The koala is a marsupial native to Australia known for
+                        its eucalyptus leaf diet.
+                      </td>
+                      <td>Mammal</td>
+                      <td>Australian Forests</td>
+                    </tr>
+                    <tr>
+                      <td>17</td>
+                      <td>Gorilla</td>
+                      <td>
+                        The gorilla is a large primate known for its strength
+                        and close genetic relation to humans.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Forests</td>
+                    </tr>
+                    <tr>
+                      <td>18</td>
+                      <td>Cheetah</td>
+                      <td>
+                        The cheetah is a fast-running cat known for its speed
+                        and spotted coat.
+                      </td>
+                      <td>Mammal</td>
+                      <td>African Savannah</td>
+                    </tr>
+                    <tr>
+                      <td>19</td>
+                      <td>Orca</td>
+                      <td>
+                        The orca, or killer whale, is a marine mammal known for
+                        its intelligence and hunting skills.
+                      </td>
+                      <td>Mammal</td>
+                      <td>Ocean</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- JQUERY -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Datatables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="../../dist/js/local-datatables.js"></script>
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Opsional to activate 👇 -->
+    <!-- <script src="../dist/js/local-chart.js"></script> -->
+    <!-- My JS -->
+    <!-- Opsional to activate 👇 -->
+    <!-- <script src="../dist/js/index.js"></script> -->
+  </body>
+</html>

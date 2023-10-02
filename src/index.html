@@ -15,6 +15,10 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+    />
     <title>Adasgo - Admin Dashboard</title>
   </head>
   <body>
@@ -61,18 +65,11 @@
               </a>
             </span>
             <span>
-              <a href="javascript:void(0);">
+              <a href="./pages/datatables.html">
                 <div class="sidebar-items">
-                  <i class="bx bxs-bar-chart-alt-2"></i>
-                  <span>Statistics</span>
-                </div>
-              </a>
-            </span>
-            <span>
-              <a href="javascript:void(0);">
-                <div class="sidebar-items">
-                  <i class="bx bx-transfer"></i>
-                  <span>Trade</span>
+                  <!-- <i class="bx bxs-bar-chart-alt-2"></i> -->
+                  <i class="bx bx-table"></i>
+                  <span>Datatables</span>
                 </div>
               </a>
             </span>
@@ -283,6 +280,16 @@
       </div>
     </div>
 
+    <!-- JQUERY -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Datatables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="../dist/js/local-datatables.js"></script>
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../dist/js/local-chart.js"></script>
